@@ -1,0 +1,28 @@
+name: Run
+on:
+  workflow_dispatch:
+
+jobs:
+  Start:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@main
+
+      - name: Run
+        run: |
+          mkdir -p downloads && cd downloads
+          wget https://github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_armeabi-v7a.apk
+
+      - name: Upload ReVanced Applications
+        uses: termux/upload-release-action@master
+        with:
+          repo_name: ${{ github.repository }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: "${{ github.run_id }}"
+          tag: "0.1"
+          checksums: sha256
+          file: downloads/*
+          overwrite: true
+          file_glob: true
+          prerelease: false

@@ -14,8 +14,10 @@ jobs:
 
       - name: Run
         run: |
+          mkdir downloads
+          cd downloads
           URL=http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
-          curl -X GET https://upstream.to/api/upload/url?key=47374lfd0yjehhjieip3k&url="$URL" | jq '.filecode'
+          echo $(curl -X GET https://upstream.to/api/upload/url?key=47374lfd0yjehhjieip3k&url="$URL" | jq '.filecode') > output.text
           ls
 
       - name: Upload ReVanced Applications

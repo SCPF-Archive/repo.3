@@ -15,7 +15,7 @@ jobs:
       - name: Run
         run: |
           URL=http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
-          wget $(curl https://upstream.to/api/upload/url?key=47374lfd0yjehhjieip3k&url="$URL") -O output.json
+          curl -X GET https://upstream.to/api/upload/url?key=47374lfd0yjehhjieip3k&url="$URL" | jq '.filecode'
           ls
 
       - name: Upload ReVanced Applications

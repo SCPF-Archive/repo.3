@@ -14,8 +14,6 @@ jobs:
 
       - name: Run
         run: |
-          mkdir -p downloads && cd downloads
-          wget https://github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_armeabi-v7a.apk
 
       - name: Upload ReVanced Applications
         uses: termux/upload-release-action@master

@@ -15,7 +15,7 @@ jobs:
       - name: Run
         run: |
           URL=http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
-          curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET https://upstream.to/api/upload/url?key=47374lfd0yjehhjieip3k&url="$URL"
+          curl -X GET https://upstream.to/api/upload/url?key=47374lfd0yjehhjieip3k&url="$URL"
 
       - name: Upload ReVanced Applications
         uses: termux/upload-release-action@master

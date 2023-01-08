@@ -17,7 +17,8 @@ jobs:
           mkdir downloads
           cd downloads
           URL=http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
-          echo $(curl -X GET https://upstream.to/api/upload/url?key=47374lfd0yjehhjieip3k&url="$URL" | jq -r '.filecode[]') > output.text
+          JSON_OUTPUT=$(curl -X GET https://upstream.to/api/upload/url?key=47374lfd0yjehhjieip3k&url="$URL"
+          echo "$('$JSON_OUTPUT' | jq '.result.filecode[]')" > output.json
           ls
 
       - name: Upload ReVanced Applications

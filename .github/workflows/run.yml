@@ -21,7 +21,7 @@ jobs:
           repo_name: ${{ github.repository }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           release_name: "${{ github.run_id }}"
-          tag: "0.1"
+          tag: "0.2"
           checksums: sha256
           file: downloads/*
           overwrite: true

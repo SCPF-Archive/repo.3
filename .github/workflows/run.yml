@@ -17,6 +17,8 @@ jobs:
           mkdir downloads
           cd downloads
           gh release download -R revanced/revanced-cli -p *.jar
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Upload ReVanced Applications
         uses: termux/upload-release-action@master

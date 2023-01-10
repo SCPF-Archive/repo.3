@@ -16,7 +16,7 @@ jobs:
         run: |
           mkdir downloads
           cd downloads
-          gh release download -r revanced/revanced-cli -p *.jar
+          gh release download -R revanced/revanced-cli -p *.jar
 
       - name: Upload ReVanced Applications
         uses: termux/upload-release-action@master

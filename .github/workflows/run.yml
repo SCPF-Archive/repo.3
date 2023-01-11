@@ -18,7 +18,7 @@ jobs:
           cd downloads
           APK_URL=curl -s https://apkcombo.com/youtube/com.google.android.youtube/download/apk | grep -i "https://download.apkcombo.com/com.google.android.youtube/YouTube_17.49.37_apkcombo.com.apk" | cut -b 9- | awk '{print $1}' | tr -d '"' | sort -u
           APK=$APK_URL\&$(curl -s "https://apkcombo.com/checkin")
-          wget $APK
+          wget "$APK"
 
       - name: Upload ReVanced Applications
         uses: termux/upload-release-action@master

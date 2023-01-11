@@ -17,7 +17,8 @@ jobs:
           mkdir -p downloads
           cd downloads
           VERSION=17.49.37
-          wget $(curl -s https://apkflash.com/apk/app/com.google.android.youtube/youtube/download/"$VERSION" | grep -i "https://download.apkflash.com/com.google.android.youtube/youtube_"$VERSION"_apkflash.com.apk" | cut -b 26- | awk '{print $1}' | tr -d '"' | sort -u)
+          com.google.android.youtube.apk=curl -s https://apkflash.com/apk/app/com.google.android.youtube/youtube/download/"$VERSION" | grep -i "https://download.apkflash.com/com.google.android.youtube/youtube_"$VERSION"_apkflash.com.apk" | cut -b 26- | awk '{print $1}' | tr -d '"' | sort -u
+          wget $com.com.google.android.youtube.apk
 
       - name: Upload ReVanced Applications
         uses: termux/upload-release-action@master

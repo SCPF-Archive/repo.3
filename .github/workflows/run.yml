@@ -17,7 +17,7 @@ jobs:
           mkdir -p downloads
           cd downloads
           WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
-          URL1=$(curl -s https://apkcombo.com/youtube/com.google.android.youtube/download/apk | grep -i "https://download.apkcombo.com/com.google.android.youtube/YouTube_17.49.37_apkcombo.com.apk" | cut -b 9- | awk '{print $1}' | tr -d '"' | sort -u)
+          curl -s https://apkcombo.com/youtube/com.google.android.youtube/download/apk | grep -i "https://download.apkcombo.com/com.google.android.youtube/YouTube_17.49.37_apkcombo.com.apk" | cut -b 9- | awk '{print $1}' | tr -d '"' | sort -u
           URL2=$(curl -s https://apkcombo.com/checkin)
           echo "$URL1&$URL2" > url.txt
           cat url.txt

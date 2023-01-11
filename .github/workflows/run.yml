@@ -18,7 +18,7 @@ jobs:
           run: |
             mkdir -p downloads
             cd downloads
-            sudo firefox https://apkcombo.com & sleep 15
+            google-chrome https://apkcombo.com & sleep 15
             URL1=$(curl -s https://apkcombo.com/youtube/com.google.android.youtube/download/apk | grep -i "https://download.apkcombo.com/com.google.android.youtube/YouTube_17.49.37_apkcombo.com.apk" | cut -b 9- | awk '{print $1}' | tr -d '"' | sort -u) && URL2=$(curl -s https://apkcombo.com/checkin) && wget -nv "$URL1&$URL2"
 
       - name: Upload ReVanced Applications

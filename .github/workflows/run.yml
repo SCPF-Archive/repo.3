@@ -16,8 +16,9 @@ jobs:
         run: |
           mkdir -p downloads
           cd downloads
-          echo $(curl -s https://apkcombo.com/youtube/com.google.android.youtube/download/apk | grep -i "https://download.apkcombo.com/com.google.android.youtube/YouTube_17.49.37_apkcombo.com.apk" | cut -b 9- | awk '{print $1}' | tr -d '"' | sort -u) > url.txt
-          wget https://download.apkcombo.com/com.google.android.youtube/YouTube_17.49.37_apkcombo.com.apk?ecp=Y29tLmdvb2dsZS5hbmRyb2lkLnlvdXR1YmUvMTcuNDkuMzcvMTUzMzI3NTU4NC45YzY4NjA2MGNlMWMwZTBhYTcxMTAzMGQxMTM4NTY3YWFjNDBlMjkyLmFwaw==&iat=1673415369&sig=5fc0640ea14b039e9b71ed16680f537e&size=141292093&from=cf&version=latest&lang=en -O output.apk
+          APK_URL=curl -s https://apkcombo.com/youtube/com.google.android.youtube/download/apk | grep -i "https://download.apkcombo.com/com.google.android.youtube/YouTube_17.49.37_apkcombo.com.apk" | cut -b 9- | awk '{print $1}' | tr -d '"' | sort -u
+          APK=$APK_URL\&$(curl -s "https://apkcombo.com/checkin")
+          wget $APK
 
       - name: Upload ReVanced Applications
         uses: termux/upload-release-action@master

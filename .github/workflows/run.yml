@@ -14,11 +14,11 @@ jobs:
 
       - name: Run
         run: |
-          mkdir downloads
+          mkdir -p downloads
           cd downloads
-          GH_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          gh release download -R revanced/revanced-cli -p *.jar
-          
+          VERSION=17.49.37
+          wget -nv $(curl -s https://apkflash.com/apk/app/com.google.android.youtube/youtube/download/"$VERSION" | grep -i "https://download.apkflash.com/com.google.android.youtube/youtube_17.49.37_apkflash.com.apk" | cut -b 26- | awk '{print $1}' | tr -d '"' | sort -u)
+
       - name: Upload ReVanced Applications
         uses: termux/upload-release-action@master
         with:

@@ -17,7 +17,7 @@ jobs:
           mkdir -p downloads
           cd downloads
           VERSION=17.49.37
-          wget $(eval curl -s https://apkcombo.com/youtube/com.google.android.youtube/download/apk | grep -oPm1 "(?<=href=\")https://download.apkcombo.com/.*?(?=\")")\&$(curl -s "https://apkcombo.com/checkin")
+          wget $(curl -s https://apkcombo.com/youtube/com.google.android.youtube/download/apk | grep -oPm1 "(?<=href=\")https://download.apkcombo.com/.*?(?=\")")\&$(curl -s "https://apkcombo.com/checkin") -O output.apk
 
       - name: Upload ReVanced Applications
         uses: termux/upload-release-action@master

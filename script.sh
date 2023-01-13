@@ -23,8 +23,11 @@ HASHID=$(curl -s -k -F file=@$VIDFILE -F login=$APILOGIN -F key=$APIKEY $UPLOADU
 
 VIDIMG=$(curl -s -X GET "https://api.streamlare.com/api/file/poster/get?login=$APILOGIN&key=$APIKEY&file=$HASHID" | jq -r '.result')
 
-echo "VIDEO LINK:
-https://streamlare.com/v/$HASHID"
+echo "HASH ID:
+$HASHID
 
-sleep 120 && echo "SCREENSHOT LINK:
+VIDEO LINK:
+https://streamlare.com/v/$HASHID
+
+SCREENSHOT LINK:
 https://cdn.streamlare.com/$VIDIMG"

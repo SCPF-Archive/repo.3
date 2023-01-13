@@ -1,17 +1,24 @@
 #!/bin/bash
 
-DL_URL="https://sample-videos.com/video123/mp4/240/big_buck_bunny_240p_1mb.mp4"
+DLURL="https://vdownload-43.sb-cd.com/1/2/12919052-720p.mp4?secure=xaxM6WuFfoDdDuGWkN3KSA,1673634409&m=43&d=1&_tid=12919052"
 
-##############
-##############
-##############
+###############################
 
-wget -q --random-wait $DL_URL -O video.mp4
+APILOGIN="4fnvjnFdY1Z18hZL"
+APIKEY="qn9BJx6KvciyhG7d"
+DATENOW=$(date +'%Y.%m.%d')
+RANDOM=$$
 
-ls
+#wget -q --random-wait $(curl -sLo $DLURL) -O video.mp4
 
-UL_URL="$(curl -s -X GET https://upstream.to/api/upload/server?key=47374lfd0yjehhjieip3k | jq -r '.result')"
+mkdir -p temp
+cp -p video.mp4 temp/$DATENOW.$RANDOM.mp4
+cd temp
+LSMAIN=$(ls *.mp4)
+FILEMP4=$(echo "$LSMAIN")
 
-FILECODE="$(curl -s -X POST -F 'key=47374lfd0yjehhjieip3k' -F 'file=@$video.mp4' "$UL_URL" | awk '{print $8}' | cut -b 10- | tr -d '":,')"
+UPLOADURL=$(curl -s -X GET "https://api.streamlare.com/api/file/upload/generate?login=$APILOGIN&key=$APIKEY" | jq -r '.result')
 
-echo "https://upstream.to/$FILECODE"
+HASHID=$(curl -k -F file=@$FILEMP4 -F login=$APILOGIN -F key=$APIKEY $UPLOADURL | jq -r '.result.hashid')
+
+echo "https://streamlare.com/$HASHID"

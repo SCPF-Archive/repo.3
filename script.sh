@@ -6,7 +6,7 @@ DL_URL="https://sample-videos.com/video123/mp4/240/big_buck_bunny_240p_1mb.mp4"
 ##############
 ##############
 
-wget -q --random-wait $DL_URL -O video.*
+wget -q --random-wait $DL_URL -O video.mp4
 
 ls
 

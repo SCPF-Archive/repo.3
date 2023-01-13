@@ -14,7 +14,8 @@ wget --progress=dot:mega --random-wait $DLURL -O video.mp4
 mkdir -p temp
 cp -p video.mp4 temp/$DATENOW.$RANDOM.mp4
 cd temp
-VIDFILE=$(ls *.mp4)
+LSMAIN=$(ls *.mp4)
+VIDFILE=$(echo "$LSMAIN")
 
 UPLOADURL=$(curl -s -X GET "https://api.streamlare.com/api/file/upload/generate?login=$APILOGIN&key=$APIKEY" | jq -r '.result')
 

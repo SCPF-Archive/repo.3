@@ -1,7 +1,7 @@
 name: Run
 on:
   push:
-    path: "*"
+    path: "assets/url.txt"
 
   workflow_dispatch:
 

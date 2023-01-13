@@ -1,8 +1,5 @@
 name: Get Video Link
 on:
-  push:
-    path: "assets/url.txt"
-
   workflow_dispatch:
 
 jobs:

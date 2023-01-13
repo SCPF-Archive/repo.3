@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DLURL="#https://vdownload-43.sb-cd.com/1/2/12919052-720p.mp4?secure=xaxM6WuFfoDdDuGWkN3KSA,1673634409&m=43&d=1&_tid=12919052"
+DLURL="https://vdownload-43.sb-cd.com/1/2/12919052-720p.mp4?secure=xaxM6WuFfoDdDuGWkN3KSA,1673634409&m=43&d=1&_tid=12919052"
 
 ###############################
 

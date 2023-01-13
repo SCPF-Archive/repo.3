@@ -10,7 +10,7 @@ RANDOM=$$
 
 wget -q --random-wait $DL_URL -O $RANDOM.mp4
 
-FILENAME=$(ls *.mp4)
+FILENAME=echo "$(ls *.mp4)"
 
 UL_URL=$(curl -s -X GET https://upstream.to/api/upload/server?key=47374lfd0yjehhjieip3k | jq -r '.result')
 

@@ -10,8 +10,8 @@ wget -q --random-wait $DL_URL -O video.mp4
 
 ls
 
-UL_URL=$(curl -s -X GET https://upstream.to/api/upload/server?key=47374lfd0yjehhjieip3k | jq -r '.result')
+UL_URL="$(curl -s -X GET https://upstream.to/api/upload/server?key=47374lfd0yjehhjieip3k | jq -r '.result')"
 
-FILECODE=$(curl -s -X POST -F 'key=47374lfd0yjehhjieip3k' -F 'file=@$video.mp4' "$UL_URL" | awk '{print $8}' | cut -b 10- | tr -d '":,')
+FILECODE="$(curl -s -X POST -F 'key=47374lfd0yjehhjieip3k' -F 'file=@$video.mp4' "$UL_URL" | awk '{print $8}' | cut -b 10- | tr -d '":,')"
 
 echo "https://upstream.to/$FILECODE"

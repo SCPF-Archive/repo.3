@@ -21,4 +21,4 @@ echo "HASH ID:
 $HASHID
 
 VIDEO LINK:
-https://streamlare.com/v/$HASHID"
+https://sltube.org/v/$HASHID"

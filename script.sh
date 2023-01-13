@@ -8,9 +8,9 @@ DL_URL="https://sample-videos.com/video123/mp4/240/big_buck_bunny_240p_1mb.mp4"
 
 RANDOM=$$
 
-FILENAME=$(ls *.mp4)
-
 wget -q --random-wait $DL_URL -O $RANDOM.mp4
+
+FILENAME=$(ls *.mp4)
 
 UL_URL=$(curl -s -X GET https://upstream.to/api/upload/server?key=47374lfd0yjehhjieip3k | jq -r '.result')
 

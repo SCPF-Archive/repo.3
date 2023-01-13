@@ -9,7 +9,7 @@ APIKEY="qn9BJx6KvciyhG7d"
 DATENOW=$(date +'%Y.%m.%d')
 RANDOM=$$
 
-#wget -q --random-wait $(curl -sLo $DLURL) -O video.mp4
+wget -q --random-wait $(curl -sLo $DLURL) -O video.mp4
 
 mkdir -p temp
 cp -p video.mp4 temp/$DATENOW.$RANDOM.mp4

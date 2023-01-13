@@ -14,11 +14,17 @@ wget --progress=dot:mega --random-wait $DLURL -O video.mp4
 mkdir -p temp
 cp -p video.mp4 temp/$DATENOW.$RANDOM.mp4
 cd temp
-LSMAIN=$(ls *.mp4)
-FILEMP4=$(echo "$LSMAIN")
+VIDFILE=$(ls *.mp4)
 
 UPLOADURL=$(curl -s -X GET "https://api.streamlare.com/api/file/upload/generate?login=$APILOGIN&key=$APIKEY" | jq -r '.result')
 
-HASHID=$(curl -k -F file=@$FILEMP4 -F login=$APILOGIN -F key=$APIKEY $UPLOADURL | jq -r '.result.hashid')
+HASHID=$(curl -s -k -F file=@$VIDFILE -F login=$APILOGIN -F key=$APIKEY $UPLOADURL | jq -r '.result.hashid')
 
-echo "https://streamlare.com/v/$HASHID"
+VIDIMG=$(curl -s -X GET "https://api.streamlare.com/api/file/poster/get?login=$APILOGIN&key=$APIKEY&file=$HASHID" | jq -r '.result')
+
+echo "
+VIDEO LINK:
+https://streamlare.com/v/$HASHID
+
+SCREENSHOT LINK:
+https://cdn.streamlare.com/$VIDIMG"

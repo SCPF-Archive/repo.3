@@ -1,5 +1,8 @@
 name: Run
 on:
+  push:
+    path: "*"
+
   workflow_dispatch:
 
 jobs:
@@ -11,6 +14,7 @@ jobs:
 
       - name: Run
         run: |
+          wget https://sample-videos.com/video123/mp4/240/big_buck_bunny_240p_1mb.mp4 -O video.mp4
           URL=$(curl -X GET https://upstream.to/api/upload/server?key=47374lfd0yjehhjieip3k | jq -r '.result')
           FILECODE=$(curl -X POST -F 'key=47374lfd0yjehhjieip3k' -F 'file=@video.mp4' "$URL" | awk '{print $8}' | cut -b 10- | tr -d '":,')
           echo "upstream.to/'$FILECODE'"

@@ -1,13 +1,10 @@
 name: Run
 on:
-  push:
-    path: "vo"
-
   workflow_dispatch:
 
 jobs:
   Start:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Clone Repository
         uses: actions/checkout@main

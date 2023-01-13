@@ -1,4 +1,4 @@
-name: Run
+name: Get Video Link
 on:
   push:
     path: "assets/url.txt"

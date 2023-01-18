@@ -15,7 +15,7 @@ VIDFILE=$(echo "$LSMAIN")
 
 UPLOADURL=$(curl -s -X GET "https://api.streamlare.com/api/file/upload/generate?login=$APILOGIN&key=$APIKEY" | jq -r '.result')
 
-HASHID=$(curl -s -k -F file=@$VIDFILE -F login=$APILOGIN -F key=$APIKEY -F folder=NSFW $UPLOADURL | jq -r '.result.hashid')
+HASHID=$(curl -s -k -F file=@$VIDFILE -F login=$APILOGIN -F key=$APIKEY $UPLOADURL | jq -r '.result.hashid')
 
 echo "HASH ID:
 $HASHID
